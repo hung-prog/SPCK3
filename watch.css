@@ -1,0 +1,473 @@
+#scrollToTopBtn {
+    display: none; /* Ẩn ban đầu */
+    position: fixed; /* Giữ cố định khi cuộn */
+    bottom: 20px; /* Cách đáy 20px */
+    right: 30px; /* Cách phải 30px */
+    z-index: 99; /* Đảm bảo nút luôn ở trên cùng */
+    border: none; /* Bỏ viền */
+    outline: none; /* Bỏ đường viền khi focus */
+    background-color: #555; /* Màu nền */
+    color: white; /* Màu chữ */
+    cursor: pointer; /* Con trỏ chuột hình bàn tay */
+    padding: 15px; /* Khoảng đệm */
+    border-radius: 10px; /* Bo tròn góc */
+    font-size: 18px; /* Cỡ chữ */
+    transition: background-color 0.3s, opacity 0.3s; /* Hiệu ứng chuyển đổi mượt mà */
+  }
+#scrollToTopBtn:hover {
+    background-color: #ff0000; /* Màu nền khi di chuột qua */
+}
+body{
+  background-color: #000000;
+}
+* {
+box-sizing: border-box;
+padding: 0;
+margin: 0;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  background-color: transparent;
+  color: white;
+  transition: background-color 0.5s ease, opacity 0.5s ease;
+  z-index: 100;
+  
+}
+.navbar.scrolled{
+  background-color: #000000;
+  opacity: 80%;
+  
+}
+
+.navbar-brand {
+  width: 100px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.navbar-items {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar-search input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 300px;
+  max-width: 100%;
+}
+#btn{
+  background-color: #000; 
+  color: white; 
+  border: 2px solid #FF0000; 
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease
+}
+
+#btn:hover {
+  background-color: #FF0000;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-items {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 12px;
+  }
+
+  .navbar-items.active {
+    display: flex;
+  }
+
+  .navbar-search input {
+    width: 100%;
+  }
+
+  .navbar-login {
+    width: 100%;
+    text-align: right;
+  }
+  .navbar-signup{
+    width: 100%;
+    text-align: right;
+  }
+}
+.submit{
+  background-color: #000; 
+  color: white; 
+  border: 2px solid #FF0000; 
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease
+}
+.submit:hover{
+  background-color: #FF0000; 
+   
+}
+.page-wrapper {
+    max-width: 1600px; /* Độ rộng tối đa của trang */
+    margin: 0 auto;
+    padding: 0 20px; /* Khoảng đệm hai bên */
+    
+}
+
+/* -- Header sử dụng FLEXBOX -- */
+.site-header {
+    display: flex; /* Kích hoạt Flexbox */
+    justify-content: space-between; /* Phân bố không gian giữa các nhóm item */
+    align-items: center; /* Căn giữa các item theo chiều dọc */
+    padding: 15px 0;
+    background-color: #1c1c1c;
+    border-bottom: 1px solid #333;
+    margin: 0 -20px; /* Mở rộng ra sát lề của page-wrapper padding */
+    padding: 15px 40px; /* Padding thực tế cho header */
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #e50914; /* Màu đỏ đặc trưng */
+}
+
+.main-nav a {
+    color: #ccc;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1em;
+    transition: color 0.2s;
+}
+.main-nav a:hover, .main-nav a.active {
+    color: #fff;
+}
+
+.search-bar input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #555;
+    border-radius: 4px 0 0 4px;
+    background-color: #333;
+    color: #fff;
+    outline: none;
+}
+.search-bar button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    background-color: #e50914;
+    color: white;
+    cursor: pointer;
+    margin-left: -1px; /* Khớp với input */
+}
+
+/* -- Khu vực tiêu đề danh mục và bộ lọc (sử dụng Flexbox) -- */
+.category-title-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+}
+.category-title-section h2 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #fff;
+    font-family:Arial, Helvetica, sans-serif
+}
+.filter-dropdown {
+    padding: 8px 12px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 4px;
+}.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Sắp xếp các mục menu chính nằm ngang */
+}
+.dropdown-toggle{
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  transition: color 0.2s ease;
+}
+.dropdown-toggle:hover{
+  color: red;
+}
+.nav-item {
+    position: relative; /* Quan trọng để định vị menu con */
+}
+
+.nav-item > a {
+    display: block;
+    padding: 20px 25px; /* Tăng padding cho dễ click */
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em; /* Tăng kích thước chữ */
+    transition: background-color 0.2s ease-in-out;
+}
+.love{
+  text-decoration: none;
+  color: #FF0000;
+}
+.love:hover{
+  color:aliceblue;
+}
+
+.nav-item:hover > a,
+.nav-item > a:focus { /* Thêm :focus cho accessibility */
+    background-color: #000000; /* Màu nền khi hover/focus mục chính */
+}
+
+
+/* Menu con thả xuống */
+.dropdown-submenu {
+    display: none; /* Ẩn ban đầu */
+    position: absolute; /* Định vị tuyệt đối so với .nav-item cha */
+    top: 100%; /* Xuất hiện ngay bên dưới mục cha */
+    left: 0;
+    background-color: rgb(21, 21, 21);
+    list-style: none;
+    padding: 8px 0; /* Padding trên dưới cho menu con */
+    margin: 0;
+    min-width: 200px; /* Độ rộng tối thiểu cho menu con */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Đổ bóng giống ảnh */
+    border-radius: 0 0 6px 6px; /* Bo góc dưới */
+    z-index: 1000; /* Đảm bảo menu con nổi lên trên */
+    
+}
+
+/* Hiển thị menu con khi hover vào .nav-item.dropdown */
+.nav-item.dropdown:hover > .dropdown-submenu,
+.nav-item.dropdown > a:focus + .dropdown-submenu, /* Hiển thị khi focus vào link cha (cho keyboard nav) */
+.nav-item.dropdown .dropdown-submenu:hover { /* Giữ menu hiển thị khi di chuột vào menu con */
+    display: block;
+}
+
+
+.dropdown-submenu li a {
+    display: block;
+    padding: 10px 20px;
+    color: #ffffff; /* Màu chữ trong menu con */
+    text-decoration: none;
+    font-size: 1em;
+    white-space: nowrap; /* Ngăn chữ xuống dòng */
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    font-family:Arial, Helvetica, sans-serif; ;
+}
+
+.dropdown-submenu li a:hover,
+.dropdown-submenu li a:focus {
+    background-color: #ffffff; /* Màu nền khi hover/focus mục con */
+    color: #ff0000; /* Thay đổi màu chữ khi hover */
+}
+.info{
+}
+.main-movie{
+  width: 100%;
+ height: 800px;
+
+}
+.site-footer {
+        background-color: #222222;
+        color: #a9a9a9;
+        padding: 50px 0;
+        font-size: 14px;
+        margin-top: 150px;
+    }
+
+    /* Container để giới hạn chiều rộng và căn giữa */
+    .container {
+        max-width: 1140px; /* Chiều rộng tối đa */
+        margin: 0 auto; /* Tự động căn giữa */
+        padding: 0 20px; /* Thêm khoảng đệm hai bên để nội dung không dính vào cạnh màn hình nhỏ */
+    }
+
+    /* Phần trên của footer chứa các cột */
+    .footer-top {
+        display: flex;
+        flex-wrap: wrap; /* Cho phép các cột tự động xuống hàng */
+        justify-content: space-between; /* Căn đều các cột */
+        gap: 30px; /* Khoảng cách giữa các cột */
+    }
+
+    /* Mỗi cột trong footer */
+    .footer-column {
+        /* Mobile-first: Mặc định mỗi cột chiếm 100% chiều rộng */
+        flex-basis: 100%;
+    }
+    
+    .footer-column .logo {
+        font-size: 32px;
+        font-weight: bold;
+        color: #ffffff;
+        margin: 0;
+        letter-spacing: 1px;
+    }
+
+    .footer-column .slogan {
+        margin: 40px 0 0 0;
+        letter-spacing: 1px;
+        font-size: 13px;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+    
+    /* Thiết lập cho tiêu đề của mỗi cột link */
+    .footer-links li:first-child {
+      color: #ffffff;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .footer-links a {
+        color: #a9a9a9;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: #ffffff;
+    }
+
+    /* Đường kẻ ngang */
+    .footer-divider {
+        border: 0;
+        border-top: 1px solid #444444;
+        margin: 40px 0;
+    }
+
+    /* Phần dưới của footer */
+    .footer-bottom {
+        text-align: center;
+    }
+
+    .social-icons {
+        margin-bottom: 20px;
+    }
+
+    .social-icons svg {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        
+        width: 36px;
+        height: 36px;
+        margin: 0 5px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .social-icons svg:hover {
+        transform: rotate(45deg);
+    }
+    
+    .copyright {
+        font-size: 13px;
+    }
+
+    /* --- RESPONSIVE --- */
+
+    /* Cho màn hình máy tính bảng (Tablet) */
+    @media (min-width: 576px) {
+        .footer-column {
+            /* 2 cột trên 1 hàng */
+            flex-basis: calc(50% - 15px);
+        }
+        .footer-column.logo-column {
+            /* Cột logo vẫn chiếm 100% trên tablet */
+            flex-basis: 100%; 
+        }
+    }
+
+    /* Cho màn hình máy tính (Desktop) */
+    @media (min-width: 992px) {
+        .footer-column {
+            /* Phân bổ không gian cho các cột */
+            flex-basis: auto;
+            flex-grow: 1;
+        }
+        .footer-column.logo-column {
+            flex-grow: 1.5; /* Cho cột logo rộng hơn một chút */
+            flex-basis: auto;
+        }
+    }
+.instagram-icon {
+     
+    position: relative;
+    
+    
+    background: radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf);
+
+   
+    border-radius: 9px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.su{
+
+  color: rgba(249, 1, 1, 0.802);
+}
+.hu{
+  color: #9b36b7ba;
+ 
+}
+
+.instagram-icon::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px; 
+
+    
+    border: 3px solid black;
+    border-radius: 50%;
+}
+
+
+.instagram-icon::after {
+    content: '';
+    position: absolute;
+    top: 6px; 
+    right: 6px; 
+    width: 4px; 
+    height: 4px; 
+    background-color: black;
+    border-radius: 50%; 
+}   

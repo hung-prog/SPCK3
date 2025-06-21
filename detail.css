@@ -1,0 +1,534 @@
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 80%;
+    font-weight: 400 !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: -.125em;
+    -webkit-font-smoothing: antialiased;
+  }
+  #myBtn:hover {
+    background-color:deepskyblue ;
+
+  }
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Sắp xếp các mục menu chính nằm ngang */
+}
+.dropdown-toggle{
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  transition: color 0.2s ease;
+}
+.dropdown-toggle:hover{
+  color: red;
+}
+.nav-item {
+    position: relative; /* Quan trọng để định vị menu con */
+}
+
+.nav-item > a {
+    display: block;
+    padding: 20px 25px; /* Tăng padding cho dễ click */
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em; /* Tăng kích thước chữ */
+    transition: background-color 0.2s ease-in-out;
+}
+
+.nav-item:hover > a,
+.nav-item > a:focus { /* Thêm :focus cho accessibility */
+    background-color: #000000; /* Màu nền khi hover/focus mục chính */
+}
+
+/* Menu con thả xuống */
+.dropdown-submenu {
+    display: none; /* Ẩn ban đầu */
+    position: absolute; /* Định vị tuyệt đối so với .nav-item cha */
+    top: 100%; /* Xuất hiện ngay bên dưới mục cha */
+    left: 0;
+    background-color: rgb(21, 21, 21);
+    list-style: none;
+    padding: 8px 0; /* Padding trên dưới cho menu con */
+    margin: 0;
+    min-width: 200px; /* Độ rộng tối thiểu cho menu con */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Đổ bóng giống ảnh */
+    border-radius: 0 0 6px 6px; /* Bo góc dưới */
+    z-index: 1000; /* Đảm bảo menu con nổi lên trên */
+    
+}
+
+/* Hiển thị menu con khi hover vào .nav-item.dropdown */
+.nav-item.dropdown:hover > .dropdown-submenu,
+.nav-item.dropdown > a:focus + .dropdown-submenu, /* Hiển thị khi focus vào link cha (cho keyboard nav) */
+.nav-item.dropdown .dropdown-submenu:hover { /* Giữ menu hiển thị khi di chuột vào menu con */
+    display: block;
+}
+
+
+.dropdown-submenu li a {
+    display: block;
+    padding: 10px 20px;
+    color: #ffffff; /* Màu chữ trong menu con */
+    text-decoration: none;
+    font-size: 1em;
+    white-space: nowrap; /* Ngăn chữ xuống dòng */
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    font-family:Arial, Helvetica, sans-serif; ;
+}
+
+.dropdown-submenu li a:hover,
+.dropdown-submenu li a:focus {
+    background-color: #ffffff; /* Màu nền khi hover/focus mục con */
+    color: #ff0000; /* Thay đổi màu chữ khi hover */
+}
+body{
+  background-color: #000000;
+}
+* {
+box-sizing: border-box;
+padding: 0;
+margin: 0;
+}
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  background-color: transparent;
+  color: white;
+  transition: background-color 0.5s ease, opacity 0.5s ease;
+  z-index: 100;
+}
+#navbar.scrolling{
+  background-color: #000000;
+  opacity: 0.7;
+  height: 110px;
+}
+
+.navbar-brand {
+  width: 70px;
+  border-radius:50%;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.navbar-items {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar-search input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 300px;
+  max-width: 100%;
+}
+#btn{
+  background-color: #000; 
+  color: white; 
+  border: 2px solid #FF0000; 
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease
+}
+
+#btn:hover {
+  background-color: #FF0000;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-items {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 12px;
+  }
+
+  .navbar-items.active {
+    display: flex;
+  }
+
+  .navbar-search input {
+    width: 100%;
+  }
+
+  .navbar-login {
+    width: 100%;
+    text-align: right;
+  }
+  .navbar-signup{
+    width: 100%;
+    text-align: right;
+  }
+}
+.submit{
+  background-color: #000; 
+  color: white; 
+  border: 2px solid #FF0000; 
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease
+}
+.submit:hover{
+  background-color: #FF0000; 
+   
+}
+.btn-close{
+    margin-right: 100px !important;
+}
+.main-background{
+  background-color: rgb(25, 24, 25) ; 
+  width: 100%;
+  height: 750px;
+}
+
+.background-img1 {
+  opacity: 30%;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  position: relative;
+  width: 2000px !important;
+  width: 50%;
+}
+.poster{
+  position:absolute;
+  width: 20%;
+ /* left: 0px; */
+ bottom: 30px;
+ left: 80px;
+ top: 100px;
+}
+
+
+
+.sofadi-one-regular{
+  position: absolute;
+  /* left: 0px; */
+ bottom: 30px;
+ top:130px !important;
+ left: 380px;
+ font-size: large;
+ color: azure;
+}
+.sofadi-one-regular {
+  font-family: "Sofadi One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.author{
+   /* left: 0px; */
+ bottom: 200px;
+ color: beige;
+ position: absolute;
+ left: 80px ;
+ 
+}
+.line{
+  background-color:dimgrey;
+  height: 1px;
+  position:absolute;
+  width: 40%;
+    /* left: 0px; */
+ bottom: 210px;
+ 
+ position: absolute;
+ left: 80px;
+}
+.author1{
+   /* left: 0px; */
+ bottom: 170px;
+ color: beige;
+ position: absolute;
+ left: 80px;
+}
+.line1{
+  background-color:dimgrey;
+  height: 1px;
+  position:absolute;
+  width: 40%;
+    /* left: 0px; */
+ bottom: 180px;
+ left: 80px;
+}
+.backgroundimg{
+  width: 100%;
+  z-index: 0;
+  opacity: 70%;
+  position: relative;
+}
+.invis{
+  position: absolute;
+    width: 100%;
+    height: 528px;
+    background-color: black;
+    opacity: 0.7;
+    inset: 0;
+    display: block;
+    top: 84px;
+    bottom: 600px;
+    
+}
+.poster{
+position: absolute;
+margin-top: 24px;
+width: 300px;
+margin-left: -50px;
+}
+.heading{
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Verdana, sans-serif;
+  position: absolute;
+  top:130px;
+  color: azure;
+  left: 380px;
+}
+.year{
+  font-size: 30px;
+  font-weight: 400;
+  position: absolute;
+  top:130px;
+  color:aliceblue;
+  left: 870px;
+}
+.category{
+  color:azure;
+  font-family: Verdana, sans-serif;
+  position: absolute;
+  top:200px;
+  left: 460px;
+}
+.category1{
+  color: dimgray;
+  font-family: Verdana, sans-serif;
+  position: absolute;
+  top:200px;
+  left: 380px;
+}
+.like{
+  background-color:deepskyblue;
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  top:250px;
+  left: 380px;
+  box-sizing: border-box;
+  border-radius: 50%;
+
+}
+.bi-heart-fill{
+  position: absolute;
+  left: 15px;
+  top:15.5px;
+  color:aliceblue ;
+}
+.like1{
+  background-color:deepskyblue;
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  top:250px;
+  left: 440px;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+.bi-emoji-heart-eyes-fill{
+  position: absolute;
+  left: 15px;
+  top:15.5px;
+  color:aliceblue ;
+}
+.trailer{
+  position: absolute;
+  top:250px;
+  left: 500px;
+  display: flex;
+  width: 110px;
+  height: 50px;
+  background-color: deepskyblue;
+  border: deepskyblue;
+}
+.bi-play-fill{
+  color:aliceblue ;
+  width: 40px;
+  height: 40px;
+}
+.trailer-1{
+  color:aliceblue ;
+  width: 25px;
+  height: 25px;
+  font-family: Verdana, sans-serif;
+  transition: color 0.4s ease
+}
+.trailer-1:hover{
+  color: #6c757d;
+}
+.bi-play-fill:hover{
+  color: dimgray;
+  transition: 0.3s;
+}
+  #time{
+    color: dimgray;
+  font-family: Verdana, sans-serif;
+  position: absolute;
+  top:220px;
+  left: 380px;
+  }
+  #time1{
+    color:azure;
+  font-family: Verdana, sans-serif;
+  position: absolute;
+  top:220px;
+  left: 430px;
+  }
+  .line{
+    color: dimgray;
+    height: 2px;
+    width: 500px;
+    left: 380px;
+    background-color:dimgrey;
+  height: 1px;
+  position:absolute;
+  
+    
+  }
+  .chung{
+  color: azure;
+  left: 380px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Verdana, sans-serif;
+  position: absolute;
+  top: 320px;
+  }
+  #Overview{
+    color: azure;
+    font-family: Verdana, sans-serif;
+  position: absolute;
+  top:350px;
+  left: 380px;
+  font-size: small;
+  }
+  .comment-section {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.comment-box {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+    border: 1px solid #e9ecef;
+}
+
+.comment-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment-input {
+    border-radius: 20px;
+    padding: 15px 20px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s;
+}
+
+.comment-input:focus {
+    box-shadow: none;
+    border-color: #86b7fe;
+}
+
+.btn-comment {
+    border-radius: 20px;
+    padding: 8px 25px;
+    background: #0d6efd;
+    border: none;
+    transition: all 0.3s;
+}
+
+.btn-comment:hover {
+    background: #0b5ed7;
+    transform: translateY(-1px);
+}
+
+.comment-actions {
+    font-size: 0.9rem;
+}
+
+.comment-actions a {
+    color: #6c757d;
+    text-decoration: none;
+    margin-right: 15px;
+    transition: color 0.2s;
+}
+
+.comment-actions a:hover {
+    color: #0d6efd;
+}
+
+.comment-time {
+    color: #adb5bd;
+    font-size: 0.85rem;
+}
+
+.reply-section {
+    margin-left: 60px;
+    border-left: 2px solid #e9ecef;
+    padding-left: 20px;
+}
+.brand:hover{
+    width: 33% auto;
+    transition: 0.6s;
+
+}
